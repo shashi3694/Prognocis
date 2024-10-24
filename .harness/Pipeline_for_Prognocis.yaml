@@ -1,0 +1,35 @@
+pipeline:
+  name: Pipeline for Prognocis
+  identifier: Pipeline_for_Prognocis
+  projectIdentifier: firstdemo
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: Myrepo
+        repoName: Prognocis
+        build: <+input>
+  stages:
+    - stage:
+        name: Build_1
+        identifier: Build_1
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: prognocis-run
+                  identifier: prognocisrun
+                  spec:
+                    shell: Sh
+                    command: echo "EMR Health care records"
